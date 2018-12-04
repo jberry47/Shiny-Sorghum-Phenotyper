@@ -485,98 +485,98 @@ ui <- dashboardPage(skin = "purple",
               plotOutput("n_diff",height=300)
           )
         )
-       )#,
-      # tabPanel("Drought",
-      #      fluidRow(
-      #        h2("Shapes"),
-      #        column(2,
-      #        box(width=13,
-      #            title = "Parameters",status = "primary",solidHeader = T,
-      #            selectInput("d_Shape", 
-      #                        label = "Choose a shape",
-      #                        choices = shapes,
-      #                        selected = "area"),
-      #            selectInput("d_Transform", 
-      #                        label = "Choose a transform",
-      #                        choices = c("No Transform","Log10"),
-      #                        selected = "No Transform"),
-      #            sliderInput("d_xrange","Adjust DAP",min=min(as.numeric(drought$DAP)),max=max(as.numeric(drought$DAP)),value=c(min(as.numeric(drought$DAP)),max(as.numeric(drought$DAP))))
-      #        )),
-      #        column(7,
-      #          box(
-      #              width = 13,
-      #              title = "Data Summaries", status = "primary", solidHeader = TRUE,
-      #              tabBox(
-      #                width = 13,
-      #                tabPanel("Trends",
-      #                         plotOutput("drought_trends",height = 300)
-      #                ),
-      #                tabPanel("Boxplots",
-      #                         plotOutput("drought_box",height = 300)
-      #                ),
-      #                tabPanel("Growth Rates",
-      #                         p("This takes some time to calculate (approximately 1min 10sec for full time range)"),
-      #                         plotOutput("drought_growth",height = 300)
-      #                )
-      #              )
-      #          )),
-      #        column(3,
-      #        fluidRow(
-      #          box(
-      #             width = 12,
-      #             title = "Highlight Genotypes", status = "primary", solidHeader = TRUE,
-      #             tags$div(class = "multicol",checkboxGroupInput("drought_genos",label = "",choices=genotypes)),
-      #             actionButton("d_select_all",label="Select All",inline=TRUE),
-      #             actionButton("d_deselect_all",label="De-Select All",inline=TRUE)
-      #        )),
-      #        fluidRow(
-      #          box(
-      #          width = 12,
-      #          title = "Download CSV", status = 'primary', solidHeader = TRUE,
-      #          downloadButton("d_save_shape_button",label="Save All Genotypes",inline=TRUE),
-      #          br(),
-      #          br(),
-      #          uiOutput("d_save_shape")
-      #        ))
-      #        )
-      #     ),
-      #     fluidRow(
-      #       h2("Color"),
-      #       box(
-      #         width = 2,
-      #         title = "Parameters", status = "primary", solidHeader = TRUE,
-      #         selectInput("d_dap", 
-      #                     label = "Days after planting",
-      #                     choices = 8:26,
-      #                     selected = 8),
-      #         selectInput("d_channel", 
-      #                     label = "Channels",
-      #                     choices = c("Red","Green","Blue","Hue","Saturation","Value","Lightness","Green-Magenta","Blue-Yellow","NIR"),
-      #                     selected = "Hue"),
-      #         selectInput("d_genotype", 
-      #                     label = "Genotype",
-      #                     choices = unique(nitrogen$Line_name1)[order(unique(nitrogen$Line_name1))],
-      #                     selected = "Atlas"),
-      #         actionButton("d_get_data",label="Load Data",inline=TRUE),
-      #         uiOutput("d_save_color")
-      #       ),
-      #       box(width = 7,
-      #           title="Treatment Histograms", status = "primary", solidHeader = TRUE,
-      #           plotOutput("d_hist",height=300)
-      #       ),
-      #       box(width = 3,
-      #           title="Difference", status = "primary", solidHeader = TRUE,
-      #           selectInput("d_compare", 
-      #                       label = "Choose a comparison",
-      #                       choices = c("100% vs 70%","100% vs Recovery","70% vs Recovery"),
-      #                       selected = "100% vs 70%"),
-      #           plotOutput("d_diff",height=300)
-      #       )
-      #     ),
-      #     br(),
-      #     br(),
-      #     hr()
-      # )
+       ),
+      tabPanel("Drought",
+           fluidRow(
+             h2("Shapes"),
+             column(2,
+             box(width=13,
+                 title = "Parameters",status = "primary",solidHeader = T,
+                 selectInput("d_Shape",
+                             label = "Choose a shape",
+                             choices = shapes,
+                             selected = "area"),
+                 selectInput("d_Transform",
+                             label = "Choose a transform",
+                             choices = c("No Transform","Log10"),
+                             selected = "No Transform"),
+                 sliderInput("d_xrange","Adjust DAP",min=min(as.numeric(drought$DAP)),max=max(as.numeric(drought$DAP)),value=c(min(as.numeric(drought$DAP)),max(as.numeric(drought$DAP))))
+             )),
+             column(7,
+               box(
+                   width = 13,
+                   title = "Data Summaries", status = "primary", solidHeader = TRUE,
+                   tabBox(
+                     width = 13,
+                     tabPanel("Trends",
+                              plotOutput("drought_trends",height = 300)
+                     ),
+                     tabPanel("Boxplots",
+                              plotOutput("drought_box",height = 300)
+                     ),
+                     tabPanel("Growth Rates",
+                              p("This takes some time to calculate (approximately 1min 10sec for full time range)"),
+                              plotOutput("drought_growth",height = 300)
+                     )
+                   )
+               )),
+             column(3,
+             fluidRow(
+               box(
+                  width = 12,
+                  title = "Highlight Genotypes", status = "primary", solidHeader = TRUE,
+                  tags$div(class = "multicol",checkboxGroupInput("drought_genos",label = "",choices=genotypes)),
+                  actionButton("d_select_all",label="Select All",inline=TRUE),
+                  actionButton("d_deselect_all",label="De-Select All",inline=TRUE)
+             )),
+             fluidRow(
+               box(
+               width = 12,
+               title = "Download CSV", status = 'primary', solidHeader = TRUE,
+               downloadButton("d_save_shape_button",label="Save All Genotypes",inline=TRUE),
+               br(),
+               br(),
+               uiOutput("d_save_shape")
+             ))
+             )
+          ),
+          fluidRow(
+            h2("Color"),
+            box(
+              width = 2,
+              title = "Parameters", status = "primary", solidHeader = TRUE,
+              selectInput("d_dap",
+                          label = "Days after planting",
+                          choices = 8:26,
+                          selected = 8),
+              selectInput("d_channel",
+                          label = "Channels",
+                          choices = c("Red","Green","Blue","Hue","Saturation","Value","Lightness","Green-Magenta","Blue-Yellow","NIR"),
+                          selected = "Hue"),
+              selectInput("d_genotype",
+                          label = "Genotype",
+                          choices = unique(nitrogen$Line_name1)[order(unique(nitrogen$Line_name1))],
+                          selected = "Atlas"),
+              actionButton("d_get_data",label="Load Data",inline=TRUE),
+              uiOutput("d_save_color")
+            ),
+            box(width = 7,
+                title="Treatment Histograms", status = "primary", solidHeader = TRUE,
+                plotOutput("d_hist",height=300)
+            ),
+            box(width = 3,
+                title="Difference", status = "primary", solidHeader = TRUE,
+                selectInput("d_compare",
+                            label = "Choose a comparison",
+                            choices = c("100% vs 70%","100% vs Recovery","70% vs Recovery"),
+                            selected = "100% vs 70%"),
+                plotOutput("d_diff",height=300)
+            )
+          ),
+          br(),
+          br(),
+          hr()
+      )
     )
   )
 )
